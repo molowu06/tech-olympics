@@ -9,7 +9,7 @@ function startTimer() {
     if (isTimerRunning) return;
 
     let minutes = document.getElementById("minutesInput").value;
-    timeRemaining = minutes * 60;
+    timeRemaining = minutes *  60;
     isTimerRunning = true;
 
     document.getElementById("status").innerHTML = "Mode: Timer";
@@ -29,7 +29,7 @@ function startTimer() {
 }
 
 function showClock() {
-    if (isTimerRunning) return;
+    if (!isTimerRunning) return;
 
     setInterval(() => {
         let now = new Date();
