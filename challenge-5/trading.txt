@@ -4,3 +4,5 @@ and an ask (sell) price. If your goal is to make a profit
 from the spread while minimizing risk, how would you set your 
 bid and ask prices?
 
+Ask should be > 100 if buyer is 1
+Bid < 100, if buying is buying a security
