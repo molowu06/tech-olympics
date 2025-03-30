@@ -1,15 +1,15 @@
-let timer;
-let timeRemaining;
-let isTimerRunning = false;
+var timer;
+var timeRemaining;
+var isTimerRunning = false;
 
-document.getElementById("startBtn").addEventListener("onClick", startTimer);
-document.getElementById("resetBtn").addEventListener("onClick", resetTimer);
+//document.getElementById("startBtn").addEventListener("onClick", startTimer);
+//document.getElementById("resetBtn").addEventListener("onClick", resetTimer);
 
 function startTimer() {
     if (isTimerRunning) return;
 
     let minutes = document.getElementById("minutesInput").value;
-    timeRemaining = minutes *  60;
+    timeRemaining = minutes * 60;
     isTimerRunning = true;
 
     document.getElementById("status").innerHTML = "Mode: Timer";
@@ -21,7 +21,7 @@ function startTimer() {
         document.getElementById("display").innerHTML = mins + ":" + secs;
 
         if (timeRemaining == 0) {
-            clearTimeout(timer);
+            clearInterval(timer);
             isTimerRunning = false;
             showClock();
         }
@@ -29,7 +29,7 @@ function startTimer() {
 }
 
 function showClock() {
-    if (!isTimerRunning) return;
+    if (isTimerRunning) return;
 
     setInterval(() => {
         let now = new Date();
@@ -37,11 +37,14 @@ function showClock() {
         let minutes = now.getMinutes();
         let seconds = now.getSeconds();
         document.getElementById("display").innerHTML = hours + ":" + minutes + ":" + seconds;
+        document.getElementById("status").innerHTML = "Mode: Clock";
     }, 1000);
 }
 
 function resetTimer() {
     clearTimeout(timer);
     isTimerRunning = false;
+    document.getElementById("status").innerHTML = "Mode: Clock";
     showClock();
+
 }
